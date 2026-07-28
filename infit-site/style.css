@@ -326,6 +326,26 @@ section.tight { padding: 48px 0; }
   color: var(--white);
 }
 
+.membership-card.best-value {
+  border-color: #b8860b;
+  background: var(--black);
+  color: var(--white);
+}
+
+.membership-card.best-value .badge {
+  background: #b8860b;
+}
+
+.membership-card.best-value .tier {
+  color: #d4a017;
+}
+
+.membership-card.best-value .price { color: var(--white); }
+.membership-card.best-value .price span { color: var(--gray-mid); }
+.membership-card.best-value .divider { border-color: #333; }
+.membership-card.best-value ul li { color: rgba(255,255,255,0.75); }
+.membership-card.best-value ul li::before { background: #d4a017; }
+
 .membership-card .badge {
   position: absolute;
   top: -1px;
