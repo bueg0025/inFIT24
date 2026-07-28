@@ -1,6 +1,6 @@
 /* ============================================
    inFIT24 — Global Stylesheet
-   Colors: #111111 (black) | #FFFFFF (white) | #D4001E (red)
+   Colors: #111111 (black) | #FFFFFF (white) | #4677ab (blue)
    Fonts: Oswald (headings) + Inter (body)
    ============================================ */
 
@@ -12,8 +12,8 @@
 :root {
   --black:   #111111;
   --white:   #FFFFFF;
-  --red:     #D4001E;
-  --red-dark:#A8001A;
+  --red:     #4677ab;
+  --red-dark:#2d5a8e;
   --gray-light: #F4F4F4;
   --gray-mid:   #CCCCCC;
   --gray-dark:  #555555;
