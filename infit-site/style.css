@@ -316,6 +316,12 @@ section.tight { padding: 48px 0; }
   padding: 36px 28px;
   position: relative;
   transition: border-color 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.membership-card ul {
+  flex: 1;
 }
 
 .membership-card:hover { border-color: var(--red); }
