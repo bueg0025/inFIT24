@@ -42,7 +42,7 @@
         "item": {
           "@type": "Product",
           "name": "Gym Membership",
-          "description": "24/7 gym access and infrared sauna. No contract. Group classes at $12/session, training at $22/session.",
+          "description": "24/7 gym access and infrared sauna. No contract. Group classes at $15/session, group training at $25/session.",
           "offers": {"@type": "Offer", "price": "55.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "priceValidUntil": "2026-12-31"}
         }
       },
@@ -92,6 +92,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .insurance-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .insurance-badge { background: var(--white); border: 1px solid var(--gray-mid); padding: 6px 14px; font-size: 0.82rem; font-weight: 500; color: var(--black); white-space: nowrap; }
+  </style>
 </head>
 <body class="page-body">
 
@@ -138,8 +142,8 @@
               <li>24/7 Gym Access</li>
               <li>Infrared Sauna Included</li>
               <li>Equipment Orientation</li>
-              <li>Group Classes: $12/session</li>
-              <li>Training: $22/session</li>
+              <li>Group Classes: $15/session</li>
+              <li>Group Training: $22/session</li>
             </ul>
             <a href="https://infit24.gymmasteronline.com/portal/membership/51b3a55ae8dc8733507b75b9d4adb248" target="_blank" rel="noopener" class="btn btn-primary">Join Now</a>
           </div>
@@ -153,8 +157,8 @@
               <li>Infrared Sauna Included</li>
               <li>Equipment Orientation</li>
               <li>4 Group Classes/Month</li>
-              <li>Additional Classes: $12</li>
-              <li>Training: $20/session</li>
+              <li>Additional Classes: $15</li>
+              <li>Group Training: $20/session</li>
             </ul>
             <a href="https://infit24.gymmasteronline.com/portal/membership/f2501a79c464b4bd608fc6587bfc30b3" target="_blank" rel="noopener" class="btn btn-outline-dark">Join Now</a>
           </div>
@@ -168,7 +172,7 @@
               <li>Infrared Sauna Included</li>
               <li>Equipment Orientation</li>
               <li>Unlimited Group Classes</li>
-              <li>Training: $20/session</li>
+              <li>Group Training: $20/session</li>
             </ul>
             <a href="https://infit24.gymmasteronline.com/portal/membership/30127534c5c04ba16e88d37313c06826" target="_blank" rel="noopener" class="btn btn-outline-dark">Join Now</a>
           </div>
@@ -197,7 +201,7 @@
               <li>24/7 Gym Access</li>
               <li>Infrared Sauna Included</li>
               <li>Equipment Orientation</li>
-              <li>Classes: $12 | Training: $22</li>
+              <li>Classes: $15 | Group Training: $22</li>
               <li>Add-ons: $45–$152/mo</li>
             </ul>
             <a href="https://infit24.gymmasteronline.com/portal/membership/18a7c55b2736476cced06f23edefb48b" target="_blank" rel="noopener" class="btn btn-outline-dark">Join Now</a>
@@ -214,7 +218,11 @@
           <div>
             <p class="section-eyebrow">Drop-In Options</p>
             <h3>Just Visiting?</h3>
-            <p style="color: var(--gray-dark); margin-top: 10px;">Day pass: <strong>$15</strong> &nbsp;|&nbsp; Single class (non-member): <strong>$15</strong></p>
+            <p style="color: var(--gray-dark); margin-top: 10px;">
+              Day pass: <strong>$10</strong><br>
+              Single drop-in class: <strong>$15</strong><br>
+              Single drop-in group training: <strong>$25</strong>
+            </p>
           </div>
           <div>
             <p class="section-eyebrow">Discounts</p>
@@ -223,77 +231,56 @@
           </div>
           <div>
             <p class="section-eyebrow">Insurance Benefits</p>
-            <h3>SilverSneakers® &amp; Renew Active®</h3>
-            <p style="color: var(--gray-dark); margin-top: 10px;">Eligible Medicare Advantage members may join at no cost depending on their plan.</p>
+            <h3>Insurance &amp; Wellness Programs</h3>
+            <p style="color: var(--gray-dark); margin-top: 10px;">We partner with several insurance and wellness programs. Eligible members may join at reduced or no cost depending on their plan.</p>
+            <div class="insurance-badges">
+              <span class="insurance-badge">SilverSneakers®</span>
+              <span class="insurance-badge">Renew Active®</span>
+              <span class="insurance-badge">One Pass</span>
+              <span class="insurance-badge">Prime Fitness Your Way</span>
+              <span class="insurance-badge">Husk</span>
+              <span class="insurance-badge">Active &amp; Fit Standard</span>
+              <span class="insurance-badge">Active &amp; Fit Premium</span>
+            </div>
+            <p style="color: var(--gray-dark); font-size: 0.82rem; margin-top: 10px;">Check with your provider to confirm eligibility.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- TRIAL FORM -->
-    <section class="trial-section" id="trial">
+    <!-- GET THE APP -->
+    <section class="trial-section" id="get-started">
       <div class="container">
-        <div class="trial-grid">
-          <div>
-            <p class="section-eyebrow">Free Trial</p>
-            <h2>Give Us a Trial Run</h2>
-            <p>Not sure which membership is right for you? Come experience inFIT24 first — no commitment, no pressure.</p>
-            <div class="trial-perks">
-              <div class="trial-perk">
-                <div class="dot"></div>
-                <p><strong>Full facility access</strong> — try every piece of equipment</p>
-              </div>
-              <div class="trial-perk">
-                <div class="dot"></div>
-                <p><strong>Infrared sauna session</strong> — included with your visit</p>
-              </div>
-              <div class="trial-perk">
-                <div class="dot"></div>
-                <p><strong>Equipment orientation</strong> — staff will show you around</p>
-              </div>
-              <div class="trial-perk">
-                <div class="dot"></div>
-                <p><strong>Zero pressure</strong> — decide on your own terms</p>
-              </div>
-            </div>
+        <div class="section-header centered" style="margin-bottom: 48px;">
+          <p class="section-eyebrow">Get Started Today</p>
+          <h2>Download Our App</h2>
+          <p>Everything you need to join, book classes, unlock the door, and manage your membership — right on your phone.</p>
+        </div>
+        <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--gray-mid); overflow: hidden; margin-bottom: 48px;">
+          <div style="text-align:center; padding: 32px 24px; border-right: 1px solid var(--gray-mid);">
+            <div style="font-family:'Oswald',sans-serif; font-size:2.5rem; font-weight:700; color:var(--red); line-height:1;">1</div>
+            <h4 style="margin: 12px 0 8px;">Download the App</h4>
+            <p style="color:var(--gray-dark); font-size:0.875rem; max-width:none;">Search "inFIT24" in the App Store or Google Play</p>
           </div>
-          <div class="trial-form">
-            <form name="trial-membership" method="POST" data-netlify="true" action="/thank-you.html">
-              <input type="hidden" name="form-name" value="trial-membership" />
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="first-name">First Name</label>
-                  <input type="text" id="first-name" name="first-name" required autocomplete="given-name" />
-                </div>
-                <div class="form-group">
-                  <label for="last-name">Last Name</label>
-                  <input type="text" id="last-name" name="last-name" required autocomplete="family-name" />
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" required autocomplete="email" />
-              </div>
-              <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" autocomplete="tel" />
-              </div>
-              <div class="form-group">
-                <label for="goal">Your Primary Goal</label>
-                <select id="goal" name="goal">
-                  <option value="">Select a goal...</option>
-                  <option value="weight-loss">Weight Loss</option>
-                  <option value="muscle">Build Muscle</option>
-                  <option value="general-fitness">General Fitness</option>
-                  <option value="injury-recovery">Injury Recovery</option>
-                  <option value="sports-performance">Sports Performance</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-              <button type="submit" class="btn btn-primary" style="width:100%;">Request My Free Trial</button>
-              <p style="font-size:0.8rem; color: var(--gray-dark); margin-top: 12px; max-width: none; text-align: center;">We'll reach out within 24 hours to schedule your visit.</p>
-            </form>
+          <div style="text-align:center; padding: 32px 24px; border-right: 1px solid var(--gray-mid);">
+            <div style="font-family:'Oswald',sans-serif; font-size:2.5rem; font-weight:700; color:var(--red); line-height:1;">2</div>
+            <h4 style="margin: 12px 0 8px;">Create Your Account</h4>
+            <p style="color:var(--gray-dark); font-size:0.875rem; max-width:none;">Tap "Join Gym" to sign up and create your member profile</p>
           </div>
+          <div style="text-align:center; padding: 32px 24px; border-right: 1px solid var(--gray-mid);">
+            <div style="font-family:'Oswald',sans-serif; font-size:2.5rem; font-weight:700; color:var(--red); line-height:1;">3</div>
+            <h4 style="margin: 12px 0 8px;">Choose Your Plan</h4>
+            <p style="color:var(--gray-dark); font-size:0.875rem; max-width:none;">Sign up for a trial or membership — add classes, group training, or sauna</p>
+          </div>
+          <div style="text-align:center; padding: 32px 24px;">
+            <div style="font-family:'Oswald',sans-serif; font-size:2.5rem; font-weight:700; color:var(--red); line-height:1;">4</div>
+            <h4 style="margin: 12px 0 8px;">Check In & Train</h4>
+            <p style="color:var(--gray-dark); font-size:0.875rem; max-width:none;">Use the app to check in, unlock the door, and have a great workout</p>
+          </div>
+        </div>
+        <div style="text-align:center; display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+          <a href="get-the-app.html" class="btn btn-primary">Get the App</a>
+          <a href="contact.html" class="btn btn-outline-dark">Contact Us</a>
         </div>
       </div>
     </section>
@@ -321,7 +308,7 @@
           <h4>Members</h4>
           <ul>
             <li><a href="https://infit24.gymmasteronline.com/portal/" target="_blank" rel="noopener">Member Login</a></li>
-            <li><a href="#trial">Free Trial</a></li>
+            <li><a href="get-the-app.html">Get the App</a></li>
             <li><a href="amenities.html#sauna">Sauna Info</a></li>
           </ul>
         </div>
@@ -330,7 +317,6 @@
           <address>
             6589 Laketowne Place NE<br>Albertville, MN 55301<br><br>
             <a href="tel:+17634244435">763-424-4435</a><br>
-            <a href="sms:+16126855286">Text: 612-685-5286</a><br>
             <a href="mailto:info@infit.org">info@infit.org</a>
           </address>
         </div>
