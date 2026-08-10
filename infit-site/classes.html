@@ -71,6 +71,8 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://images.squarespace-cdn.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body class="page-body">
@@ -141,16 +143,11 @@
         <div class="section-header centered" style="margin-bottom: 36px;">
           <p class="section-eyebrow">Live Schedule</p>
           <h2>Book Your Spot</h2>
-          <p>View available classes and book right in your app.</p>
+          <p>View available classes and book directly through the calendar below.</p>
         </div>
-        <!-- GymMaster schedule embed — replace src with your embed URL from GymMaster → Settings → Online Booking → Widgets -->
-        <iframe
-          src="https://infit24.gymmasteronline.com/portal/bookings"
-          class="schedule-embed"
-          title="inFIT24 Class Schedule"
-          loading="lazy"
-          allowfullscreen
-        ></iframe>
+        <figure style="margin: 0;">
+          <iframe class="gmiframe" src="https://infit24.gymmasteronline.com/portal/classcalendar?logo=0" width="100%" frameborder="0" allow="camera *" title="inFIT24 Class Schedule" style="min-height: 600px; display: block;"></iframe>
+        </figure>
       </div>
     </section>
 
@@ -228,5 +225,11 @@
   </footer>
 
   <script src="js/main.js"></script>
+
+  <!-- GymMaster calendar widget scripts -->
+  <script>if (typeof jQuery !== 'undefined') var oldJQuery = jQuery.noConflict(true);</script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script>jQueryX = jQuery.noConflict(true); jQuery = oldJQuery;</script>
+  <script src="https://infit24.gymmasteronline.com/portal/static/js/hostpage.js"></script>
 </body>
 </html>

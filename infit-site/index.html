@@ -80,8 +80,32 @@
       "@type": "AggregateRating",
       "ratingValue": "5",
       "reviewCount": "3",
-      "bestRating": "5"
+      "bestRating": "5",
+      "worstRating": "1"
     },
+    "review": [
+      {
+        "@type": "Review",
+        "author": {"@type": "Person", "name": "K H"},
+        "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+        "datePublished": "2025-08-01",
+        "reviewBody": "inFIT is a fantastic local gym. The staff is excellent, particularly Shannon and Mark! If you're looking for a friendly and welcoming environment, I highly recommend Infit. Bonus, if you need a personal trainer, Nicole is amazing!"
+      },
+      {
+        "@type": "Review",
+        "author": {"@type": "Person", "name": "Jack Carroll"},
+        "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+        "datePublished": "2026-01-01",
+        "reviewBody": "It is hands-down the best gym in the area. The atmosphere is unmatched. Whether you are just starting your fitness journey or you have been lifting for years, InFit makes you feel welcome. The equipment is solid, the space is clean, and there is always motivation energy in the building that pushes you to give more. The staff members and trainers care, support each other, and want to see you improve. Highly recommend."
+      },
+      {
+        "@type": "Review",
+        "author": {"@type": "Person", "name": "Easton Knealing"},
+        "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+        "datePublished": "2026-02-01",
+        "reviewBody": "Fantastic gym! Has everything a newcomer could ask for and even a daily gym goer as well. I love my experience here every time I come in. The great staff talks to you and welcomes you in. They have every sort of equipment someone can ask for as well!"
+      }
+    ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Gym Memberships",
@@ -119,7 +143,8 @@
     "sameAs": [
       "https://www.instagram.com/infit24gym",
       "https://www.facebook.com/inFITwellness",
-      "https://www.tiktok.com/@infit_247"
+      "https://www.tiktok.com/@infit_247",
+      "https://www.google.com/maps/place/inFIT+24%2F7/@45.2470771,-93.6617108,17z/data=!3m1!4b1!4m6!3m5!1s0x52b3677893177337:0xabc8926c98cc3bfd"
     ]
   }
   </script>
@@ -198,9 +223,12 @@
   }
   </script>
 
-  <!-- Fonts -->
+  <!-- Fonts & resource hints -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://images.squarespace-cdn.com" crossorigin />
+  <link rel="preload" as="image" href="https://images.squarespace-cdn.com/content/v1/68eaa1ed701e7102ad9f2729/95c079f0-dc3a-4cfd-b3cd-2d84f17d4ef5/IMG_5089+2.png" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body class="page-body">
@@ -424,25 +452,25 @@
         <div class="reviews-grid">
           <div class="review-card">
             <div class="review-stars">★★★★★</div>
-            <p class="review-text">"Incredible gym for the price. The equipment is top-notch, the sauna is a game changer, and being open 24/7 means I never miss a workout."</p>
-            <div class="review-author">Sarah M.</div>
+            <p class="review-text">"inFIT is a fantastic local gym. The staff is excellent, particularly Shannon and Mark! If you're looking for a friendly and welcoming environment, I highly recommend Infit. Bonus, if you need a personal trainer, Nicole is amazing!"</p>
+            <div class="review-author">K H</div>
             <div class="review-date">Google Review</div>
           </div>
           <div class="review-card">
             <div class="review-stars">★★★★★</div>
-            <p class="review-text">"Best gym in the area by far. Clean, well-maintained, and the staff during staffed hours are super helpful. Love the group classes."</p>
-            <div class="review-author">Jake T.</div>
+            <p class="review-text">"Hands-down the best gym in the area. The atmosphere is unmatched — InFit makes you feel welcome whether you're just starting or have been lifting for years. The staff and trainers care, support each other, and want to see you improve."</p>
+            <div class="review-author">Jack Carroll</div>
             <div class="review-date">Google Review</div>
           </div>
           <div class="review-card">
             <div class="review-stars">★★★★★</div>
-            <p class="review-text">"The infrared sauna alone is worth it. I've been a member for over a year and I genuinely look forward to coming in every day."</p>
-            <div class="review-author">Amy R.</div>
+            <p class="review-text">"Fantastic gym! Has everything a newcomer could ask for and even a daily gym goer as well. The staff welcomes you in and has every sort of equipment someone can ask for. Thanks to everyone that works at inFIT for the great experience!"</p>
+            <div class="review-author">Easton Knealing</div>
             <div class="review-date">Google Review</div>
           </div>
         </div>
         <div class="reviews-cta">
-          <a href="https://g.page/infit24/review" target="_blank" rel="noopener" class="btn btn-outline-dark">See All Google Reviews</a>
+          <a href="https://www.google.com/maps/place/inFIT+24%2F7/@45.2470771,-93.6617108,17z/data=!3m1!4b1!4m6!3m5!1s0x52b3677893177337:0xabc8926c98cc3bfd#lrd=0x52b3677893177337:0xabc8926c98cc3bfd,1" target="_blank" rel="noopener" class="btn btn-outline-dark">See All Google Reviews</a>
         </div>
       </div>
     </section>
