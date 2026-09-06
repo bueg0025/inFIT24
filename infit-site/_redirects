@@ -1,2 +1,0 @@
-# Redirect non-www to www (Netlify handles HTTP→HTTPS automatically)
-https://infit.org/*  https://www.infit.org/:splat  301!
