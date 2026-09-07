@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Find Your inFIT Membership | Quiz | inFIT24 Albertville MN</title>
+  <meta name="description" content="Not sure which membership is right for you? Take our 60-second quiz and we'll match you with the perfect inFIT24 plan." />
+  <link rel="canonical" href="https://www.infit.org/find-your-fit" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .quiz-wrap {
+      min-height: calc(100vh - var(--nav-h));
+      padding-top: var(--nav-h);
+      background: var(--gray-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 80px;
+    }
+
+    .quiz-card {
+      background: var(--white);
+      max-width: 680px;
+      width: 100%;
+      margin: 48px 24px 0;
+      padding: 56px 48px;
+      border-top: 4px solid var(--red);
+    }
+
+    @media (max-width: 600px) {
+      .quiz-card { padding: 36px 24px; }
+    }
+
+    .quiz-progress {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 40px;
+    }
+
+    .quiz-progress-bar {
+      height: 4px;
+      flex: 1;
+      background: var(--gray-mid);
+      transition: background 0.3s;
+    }
+
+    .quiz-progress-bar.active { background: var(--red); }
+
+    .quiz-eyebrow {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 12px;
+    }
+
+    .quiz-question {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 32px;
+      color: var(--black);
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .quiz-option {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 20px;
+      border: 2px solid var(--gray-mid);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      user-select: none;
+    }
+
+    .quiz-option:hover { border-color: var(--black); }
+
+    .quiz-option.selected {
+      border-color: var(--red);
+      background: #f0f5fb;
+    }
+
+    .quiz-option-icon {
+      font-size: 1.5rem;
+      width: 36px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .quiz-option-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--black);
+      max-width: none;
+    }
+
+    .quiz-option-sub {
+      font-size: 0.82rem;
+      color: var(--gray-dark);
+      font-weight: 400;
+      margin-top: 2px;
+    }
+
+    .quiz-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 36px;
+    }
+
+    .quiz-back {
+      background: none;
+      border: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: var(--gray-dark);
+      cursor: pointer;
+      padding: 0;
+      text-decoration: underline;
+    }
+
+    .quiz-back:disabled { opacity: 0; pointer-events: none; }
+
+    /* Result screen */
+    .quiz-result { display: none; }
+
+    .result-badge {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      margin-bottom: 16px;
+    }
+
+    .result-tier {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 4px;
+    }
+
+    .result-price {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.3rem;
+      color: var(--red);
+      margin-bottom: 20px;
+    }
+
+    .result-desc {
+      color: var(--gray-dark);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 28px;
+      max-width: none;
+    }
+
+    .result-includes {
+      background: var(--gray-light);
+      padding: 20px 24px;
+      margin-bottom: 28px;
+    }
+
+    .result-includes h4 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-dark);
+      margin-bottom: 12px;
+    }
+
+    .result-includes ul {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .result-includes li {
+      font-size: 0.95rem;
+      color: var(--black);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .result-includes li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--red);
+      flex-shrink: 0;
+    }
+
+    .result-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .quiz-restart {
+      background: none;
+      border: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      color: var(--gray-dark);
+      cursor: pointer;
+      text-decoration: underline;
+      margin-top: 20px;
+      display: block;
+    }
+
+    /* Intro screen */
+    .quiz-intro { text-align: center; }
+    .quiz-intro h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 16px; }
+    .quiz-intro p { color: var(--gray-dark); margin: 0 auto 32px; max-width: 48ch; }
+    .quiz-meta { font-size: 0.82rem; color: var(--gray-dark); margin-top: 12px; }
+  </style>
+</head>
+<body class="page-body">
+
+  <nav class="site-nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="inFIT24 home">
+        <img src="images/logo-white.svg" alt="inFIT24" />
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" role="list">
+        <li><a href="memberships.html">Membership</a></li>
+        <li><a href="amenities.html">Amenities</a></li>
+        <li><a href="classes.html">Classes</a></li>
+        <li><a href="personal-training.html">Training</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="https://infit24.gymmasteronline.com/portal/" target="_blank" rel="noopener" class="nav-cta">Member Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="quiz-wrap">
+    <div class="quiz-card">
+
+      <!-- INTRO -->
+      <div id="quiz-intro" class="quiz-intro">
+        <p class="quiz-eyebrow">60-Second Quiz</p>
+        <h1>Find Your inFIT Membership</h1>
+        <p>Answer 4 quick questions and we'll match you with the plan that fits your goals, your schedule, and your budget.</p>
+        <button class="btn btn-primary" onclick="startQuiz()">Find My Plan</button>
+        <p class="quiz-meta">No email required &nbsp;·&nbsp; Takes about 60 seconds</p>
+      </div>
+
+      <!-- QUIZ -->
+      <div id="quiz-body" style="display:none;">
+        <div class="quiz-progress" id="progress-bars"></div>
+        <p class="quiz-eyebrow" id="q-step"></p>
+        <h2 class="quiz-question" id="q-text"></h2>
+        <div class="quiz-options" id="q-options"></div>
+        <div class="quiz-nav">
+          <button class="quiz-back" id="btn-back" onclick="prevQuestion()">Back</button>
+          <button class="btn btn-primary" id="btn-next" onclick="nextQuestion()" disabled>Next</button>
+        </div>
+      </div>
+
+      <!-- RESULT -->
+      <div id="quiz-result" class="quiz-result">
+        <span class="result-badge">Your Match</span>
+        <div class="result-tier" id="r-tier"></div>
+        <div class="result-price" id="r-price"></div>
+        <p class="result-desc" id="r-desc"></p>
+        <div class="result-includes">
+          <h4>What's Included</h4>
+          <ul id="r-includes"></ul>
+        </div>
+        <p id="r-note" style="font-size:0.85rem;color:var(--gray-dark);margin-bottom:24px;max-width:none;display:none;"></p>
+        <div class="result-actions">
+          <a id="r-cta" href="#" target="_blank" rel="noopener" class="btn btn-primary">Join Now</a>
+          <a href="memberships.html" class="btn btn-outline-dark">See All Plans</a>
+        </div>
+        <button class="quiz-restart" onclick="restartQuiz()">Retake the quiz</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>
+    const questions = [
+      {
+        step: "Question 1 of 4",
+        text: "What's your main goal?",
+        options: [
+          { icon: "🔥", label: "Lose weight & get in shape", sub: "Cardio, classes, and consistency", value: "weight" },
+          { icon: "💪", label: "Build muscle & strength", sub: "Weights, machines, and progressive training", value: "muscle" },
+          { icon: "🧘", label: "Stay active & feel good", sub: "Classes, movement, and a welcoming community", value: "active" },
+          { icon: "🏆", label: "Train seriously with a coach", sub: "Structured programming and accountability", value: "coach" }
+        ]
+      },
+      {
+        step: "Question 2 of 4",
+        text: "How often do you realistically work out?",
+        options: [
+          { icon: "📅", label: "1–2 times per week", sub: "Getting started or maintaining", value: "low" },
+          { icon: "📆", label: "3–4 times per week", sub: "Consistent and committed", value: "mid" },
+          { icon: "🗓️", label: "5+ times per week", sub: "Fitness is a priority", value: "high" }
+        ]
+      },
+      {
+        step: "Question 3 of 4",
+        text: "How do you prefer to work out?",
+        options: [
+          { icon: "🎧", label: "On my own", sub: "I know what I'm doing and like the freedom", value: "solo" },
+          { icon: "👥", label: "Group classes", sub: "Energy from others keeps me motivated", value: "group" },
+          { icon: "🎯", label: "Coached group training", sub: "Small group sessions with a trainer pushing me", value: "coached" }
+        ]
+      },
+      {
+        step: "Last question!",
+        text: "Who's joining?",
+        options: [
+          { icon: "🙋", label: "Just me", sub: "Individual membership", value: "solo" },
+          { icon: "👨‍👩‍👧", label: "Me and my family", sub: "3+ people from the same household", value: "family" }
+        ]
+      }
+    ];
+
+    const results = {
+      family: {
+        tier: "Family Membership",
+        price: "$140/mo",
+        desc: "The best deal for households that train together. Three or more family members get full 24/7 access and sauna — all on one plan with no contracts.",
+        includes: ["3+ household members", "24/7 gym access", "Infrared sauna included", "Equipment orientation", "Add-ons available per member"],
+        cta: "https://infit24.gymmasteronline.com/portal/membership/18a7c55b2736476cced06f23edefb48b"
+      },
+      gym: {
+        tier: "Gym Membership",
+        price: "$55/mo",
+        desc: "Everything you need, nothing you don't. 24/7 access and the infrared sauna are included. When you want to try a class or group training, just pay as you go.",
+        includes: ["24/7 gym access", "Infrared sauna included", "Equipment orientation", "Group classes available at $15/session", "Group training available at $22/session"],
+        cta: "https://infit24.gymmasteronline.com/portal/membership/51b3a55ae8dc8733507b75b9d4adb248"
+      },
+      plus: {
+        tier: "Plus Membership",
+        price: "$79/mo",
+        desc: "You like classes but don't need unlimited. Four group classes per month are built in — enough to stay consistent without overpaying.",
+        includes: ["24/7 gym access", "Infrared sauna included", "4 group classes per month", "Additional classes at $15", "Group training at $20/session"],
+        cta: "https://infit24.gymmasteronline.com/portal/membership/f2501a79c464b4bd608fc6587bfc30b3"
+      },
+      premium: {
+        tier: "Premium Membership",
+        price: "$99/mo",
+        desc: "Classes are your thing — you show up, you stay consistent, and you want the flexibility to go as often as you want. Unlimited group fitness, included.",
+        includes: ["24/7 gym access", "Infrared sauna included", "Unlimited group fitness classes", "Group training at $20/session"],
+        cta: "https://infit24.gymmasteronline.com/portal/membership/30127534c5c04ba16e88d37313c06826"
+      },
+      ultimate: {
+        tier: "Ultimate Membership",
+        price: "$199/mo",
+        desc: "You want coached training — and Ultimate is built for exactly that. Unlimited group training sessions, unlimited classes, and full gym access. Once you're doing coached training regularly, this is objectively the best value.",
+        note: "Not sure how often you'll train with a coach? Our staff can help you figure out if pay-per-session makes more sense for your schedule. No pressure.",
+        includes: ["24/7 gym access", "Unlimited sauna access", "Unlimited group fitness classes", "Unlimited personal training sessions"],
+        cta: "https://infit24.gymmasteronline.com/portal/membership/a0f8da3847919cd221832495c7ef0c50"
+      }
+    };
+
+    let current = 0;
+    let answers = [];
+
+    function getSequence() {
+      return [0, 1, 2, 3]; // goal, frequency, style, who's joining
+    }
+
+    function startQuiz() {
+      document.getElementById('quiz-intro').style.display = 'none';
+      document.getElementById('quiz-body').style.display = 'block';
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      const seq = getSequence();
+      const qIdx = seq[current];
+      const q = questions[qIdx];
+
+      document.getElementById('q-step').textContent = q.step;
+      document.getElementById('q-text').textContent = q.text;
+
+      const optContainer = document.getElementById('q-options');
+      optContainer.innerHTML = '';
+      q.options.forEach(opt => {
+        const div = document.createElement('div');
+        div.className = 'quiz-option' + (answers[qIdx] === opt.value ? ' selected' : '');
+        div.innerHTML = `<span class="quiz-option-icon">${opt.icon}</span><div><div class="quiz-option-text">${opt.label}</div><div class="quiz-option-sub">${opt.sub}</div></div>`;
+        div.addEventListener('click', (e) => selectOption(opt.value, qIdx, e.currentTarget));
+        optContainer.appendChild(div);
+      });
+
+      // Progress bars based on sequence length
+      const bars = document.getElementById('progress-bars');
+      bars.innerHTML = '';
+      const total = getSequence().length;
+      for (let i = 0; i < total; i++) {
+        const bar = document.createElement('div');
+        bar.className = 'quiz-progress-bar' + (i <= current ? ' active' : '');
+        bars.appendChild(bar);
+      }
+
+      document.getElementById('btn-back').disabled = current === 0;
+      document.getElementById('btn-next').disabled = answers[qIdx] === undefined;
+
+      const nextBtn = document.getElementById('btn-next');
+      nextBtn.textContent = current === getSequence().length - 1 ? 'See My Plan' : 'Next';
+    }
+
+    function selectOption(value, qIdx, el) {
+      answers[qIdx] = value;
+      document.querySelectorAll('.quiz-option').forEach(e => e.classList.remove('selected'));
+      el.classList.add('selected');
+      document.getElementById('btn-next').disabled = false;
+    }
+
+    function nextQuestion() {
+      const seq = getSequence();
+      const qIdx = seq[current];
+      if (answers[qIdx] === undefined) return;
+
+      // If user just answered Q2 (style), rebuild sequence in case coached was selected
+      if (qIdx === 2) {
+        // clear old training-frequency answer if they switched away from coached
+        if (answers[2] !== 'coached') answers[3] = undefined;
+      }
+
+      if (current < getSequence().length - 1) {
+        current++;
+        renderQuestion();
+      } else {
+        showResult();
+      }
+    }
+
+    function prevQuestion() {
+      if (current > 0) { current--; renderQuestion(); }
+    }
+
+    function getResult() {
+      if (answers[3] === 'family') return 'family';
+
+      const style = answers[2];
+
+      // All coached paths → Ultimate
+      if (style === 'coached') return 'ultimate';
+
+      const freq = answers[1];
+
+      // Group classes + mid/high frequency → Premium
+      if (style === 'group' && (freq === 'high' || freq === 'mid')) return 'premium';
+
+      // Group classes + low frequency → Plus
+      if (style === 'group' && freq === 'low') return 'plus';
+
+      // Solo any frequency → Gym
+      return 'gym';
+    }
+
+    function showResult() {
+      document.getElementById('quiz-body').style.display = 'none';
+      const resultEl = document.getElementById('quiz-result');
+      resultEl.style.display = 'block';
+
+      const key = getResult();
+      const r = results[key];
+
+      document.getElementById('r-tier').textContent = r.tier;
+      document.getElementById('r-price').textContent = r.price + ' · No Contract';
+      document.getElementById('r-desc').textContent = r.desc;
+      document.getElementById('r-cta').href = r.cta;
+      const noteEl = document.getElementById('r-note');
+      if (r.note) { noteEl.textContent = r.note; noteEl.style.display = 'block'; }
+      else { noteEl.style.display = 'none'; }
+
+      const ul = document.getElementById('r-includes');
+      ul.innerHTML = '';
+      r.includes.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        ul.appendChild(li);
+      });
+    }
+
+    function restartQuiz() {
+      current = 0;
+      answers = [];
+      document.getElementById('quiz-result').style.display = 'none';
+      document.getElementById('quiz-intro').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
