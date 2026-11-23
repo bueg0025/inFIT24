@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.infit.org/sitemap.xml
+Sitemap: https://infit.org/sitemap.xml
